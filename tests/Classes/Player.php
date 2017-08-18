@@ -4,7 +4,6 @@ namespace Tests\Classes;
 
 class Player
 {
-
     private $name;
     private $surname;
     private $age;
@@ -16,17 +15,20 @@ class Player
         $this->age = $age;
     }
 
-    public function __isset($property) {
+    public function __isset($property)
+    {
         return isset($this->$property);
     }
 
-    public function __get($property) {
+    public function __get($property)
+    {
         if (property_exists($this, $property)) {
             return $this->$property;
         }
     }
 
-    public function __set($property, $value) {
+    public function __set($property, $value)
+    {
         if (property_exists($this, $property)) {
             $this->$property = $value;
         }

@@ -8,7 +8,6 @@ use Tests\Classes\Player;
 
 class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @var ArrangeByKeyExtension
      */
@@ -83,7 +82,7 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
     public function testFilterWithInvalidMultidimensionalArray()
     {
         $this->setExpectedException('InvalidArgumentException');
-        $this->extension->collectionFilter([ [[]], [] ], 'anything');
+        $this->extension->collectionFilter([[[]], []], 'anything');
     }
 
     /**
@@ -99,7 +98,7 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
             ['name' => 'Bruce', 'surname' => 'Harper', 'age' => '15'],
         ];
         $this->setExpectedException('InvalidArgumentException');
-        $this->extension->collectionFilter($array,'age');
+        $this->extension->collectionFilter($array, 'age');
     }
 
     /**
@@ -140,14 +139,14 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
                [
                    '15' => [
                        ['name' => 'Oliver', 'surname' => 'Hutton', 'age' => '15'],
-                       ['name' => 'Bruce', 'surname' => 'Harper', 'age' => '15']
+                       ['name' => 'Bruce', 'surname' => 'Harper', 'age' => '15'],
                    ],
                    '17' => [
                        ['name' => 'Mark', 'surname' => 'Lenders', 'age' => '17'],
-                       ['name' => 'Benji', 'surname' => 'Price', 'age' => '17']
-                   ]
+                       ['name' => 'Benji', 'surname' => 'Price', 'age' => '17'],
+                   ],
                ],
-               "New array should have as keys the values of the key 'age'"
+               "New array should have as keys the values of the key 'age'",
            ],
 
         ];
@@ -159,7 +158,7 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
             [
                 [],
                 [],
-                'Resulting array should be an empty array'
+                'Resulting array should be an empty array',
             ],
         ];
     }
@@ -184,11 +183,11 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
             [
                 $collection,
                 [
-                    '15' => [ $ob2, $ob4 ],
-                    '17' => [ $ob1, $ob3 ]
+                    '15' => [$ob2, $ob4],
+                    '17' => [$ob1, $ob3],
                 ],
-                'New array from DoctrineCollection should have as keys the values of the key \'age\''
-            ]
+                'New array from DoctrineCollection should have as keys the values of the key \'age\'',
+            ],
         ];
     }
 
@@ -212,11 +211,11 @@ class arrangeByKeyExtensionTest extends PHPUnit_Framework_TestCase
             [
                 $collection,
                 [
-                    '15' => [ $ob2, $ob4 ],
-                    '17' => [ $ob1, $ob3 ]
+                    '15' => [$ob2, $ob4],
+                    '17' => [$ob1, $ob3],
                 ],
-                'New array from EloquentCollection should have as keys the values of the key \'age\''
-            ]
+                'New array from EloquentCollection should have as keys the values of the key \'age\'',
+            ],
         ];
     }
 }
